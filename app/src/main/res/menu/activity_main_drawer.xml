@@ -13,6 +13,10 @@
             android:icon="@drawable/ic_baseline_favorite_24"
             android:title="Избранное" />
         <item
+            android:id="@+id/nav_reviews"
+            android:icon="@drawable/ic_baseline_rate_review_24"
+            android:title="Отзывы"/>
+        <item
             android:id="@+id/nav_share"
             android:icon="@drawable/ic_baseline_share_24"
             android:title="Поделиться" />

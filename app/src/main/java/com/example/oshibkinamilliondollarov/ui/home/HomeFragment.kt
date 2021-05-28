@@ -18,7 +18,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         super.onViewCreated(view, savedInstanceState)
 
         rvThemes.adapter = adapter
-        rvThemes.addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
+        //rvThemes.addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
         dao = BookDatabase.getInstance(requireContext()).dao()
 
         setData()
