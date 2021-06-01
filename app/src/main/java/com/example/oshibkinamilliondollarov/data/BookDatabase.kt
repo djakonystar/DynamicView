@@ -4,26 +4,30 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.oshibkinamilliondollarov.data.dao.MyDao
-import com.example.oshibkinamilliondollarov.data.model.MyData
+import com.example.oshibkinamilliondollarov.data.dao.BookDao
+import com.example.oshibkinamilliondollarov.data.model.ThemeModel
+import com.example.oshibkinamilliondollarov.data.model.Content
 
-
-@Database(entities = [MyData::class], version = 1)
+@Database(entities = [ThemeModel::class, Content::class], version = 1)
 abstract class BookDatabase: RoomDatabase() {
 
     companion object {
         private lateinit var INSTANCE: BookDatabase
-        fun getInstance(context: Context): BookDatabase =
-        Room.databaseBuilder(
-            context,
-            BookDatabase::class.java,
-            "MyBook.db"
-        )
-            .createFromAsset("MyBook.db")
-            .allowMainThreadQueries()
-            .build()
+        fun getInstance(context: Context): BookDatabase {
+            if (!::INSTANCE.isInitialized) {
+                INSTANCE = Room.databaseBuilder(
+                    context,
+                    BookDatabase::class.java,
+                    "MyBook.db"
+                )
+                    .createFromAsset("MyBook.db")
+                    .allowMainThreadQueries()
+                    .build()
+            }
+            return INSTANCE
+        }
+
     }
 
-    abstract fun dao(): MyDao
-
+    abstract fun dao(): BookDao
 }
