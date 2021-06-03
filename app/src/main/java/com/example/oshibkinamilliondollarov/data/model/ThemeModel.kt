@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "themes")
-data class MyData(
+data class ThemeModel(
     @PrimaryKey
     val id: Int,
     @ColumnInfo(name="name")
