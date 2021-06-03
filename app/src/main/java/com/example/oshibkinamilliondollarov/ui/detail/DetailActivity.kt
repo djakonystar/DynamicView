@@ -30,7 +30,7 @@ class DetailActivity : AppCompatActivity() {
         val dao = BookDatabase.getInstance(this).dao()
         content = dao.getTextByThemeId(themeId)
         content.text?.let {
-            tvThemeText.text = HtmlCompat.fromHtml(it, HtmlCompat.FROM_HTML_MODE_COMPACT)
+            webView.loadData(it, "text/html", "UTF-8")
         }
     }
 

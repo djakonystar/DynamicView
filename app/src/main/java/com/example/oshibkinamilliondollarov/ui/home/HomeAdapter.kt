@@ -32,12 +32,9 @@ class HomeAdapter: RecyclerView.Adapter<HomeAdapter.MyViewHolder>() {
         fun populateModel(data: ThemeModel) {
             itemView.tvNameTheme.text = data.name
             itemView.tvDescription.text = data.description
-
             itemView.setOnClickListener {
                 onItemClicked.invoke(data.id)
             }
-
         }
     }
-
 }

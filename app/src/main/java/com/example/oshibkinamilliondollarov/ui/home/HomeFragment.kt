@@ -17,7 +17,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         rvThemes.adapter = myAdapter
         dao = BookDatabase.getInstance(requireContext()).dao()
         myAdapter.onItemClicked = {
@@ -31,5 +30,4 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private fun setData() {
         myAdapter.models = dao.getAllData()
     }
-
 }

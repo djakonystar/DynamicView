@@ -8,7 +8,6 @@ import com.google.android.material.navigation.NavigationView
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.view.GravityCompat
 import com.example.oshibkinamilliondollarov.R
 import com.example.oshibkinamilliondollarov.ui.home.HomeFragment
 
