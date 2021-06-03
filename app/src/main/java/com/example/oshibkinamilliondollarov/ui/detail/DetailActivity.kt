@@ -46,8 +46,4 @@ class DetailActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-
-    private fun setFavorite() {
-
-    }
 }
