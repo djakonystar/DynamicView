@@ -33,7 +33,6 @@ class HomeAdapter: RecyclerView.Adapter<HomeAdapter.MyViewHolder>() {
             itemView.tvNameTheme.text = data.name
             itemView.tvDescription.text = data.description
 
-            //textViewId.text = HtmlCompat.fromHtml(text, HtmlCompat.FROM_HTML_MODE_COMPACT)
             itemView.setOnClickListener {
                 onItemClicked.invoke(data.id)
             }

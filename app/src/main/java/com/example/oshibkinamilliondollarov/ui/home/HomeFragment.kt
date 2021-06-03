@@ -17,7 +17,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val type = arguments?.getInt(MainActivity.TYPE_ID) ?. 1
 
         rvThemes.adapter = myAdapter
         dao = BookDatabase.getInstance(requireContext()).dao()
@@ -26,11 +25,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             mIntent.putExtra(DetailActivity.TEXTS_ID, it)
             startActivity(mIntent)
         }
-        setData(type)
+        setData()
     }
 
-    private fun setData(type: Int) {
-        myAdapter.models = dao.getAllData(type)
+    private fun setData() {
+        myAdapter.models = dao.getAllData()
     }
 
 }
