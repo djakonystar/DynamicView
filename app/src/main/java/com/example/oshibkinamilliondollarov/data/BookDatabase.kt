@@ -6,9 +6,8 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.oshibkinamilliondollarov.data.dao.BookDao
 import com.example.oshibkinamilliondollarov.data.model.ThemeModel
-import com.example.oshibkinamilliondollarov.data.model.Content
 
-@Database(entities = [ThemeModel::class, Content::class], version = 1)
+@Database(entities = [ThemeModel::class], version = 1)
 abstract class BookDatabase: RoomDatabase() {
 
     companion object {

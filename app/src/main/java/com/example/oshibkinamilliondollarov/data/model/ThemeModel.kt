@@ -11,6 +11,10 @@ data class ThemeModel(
     @ColumnInfo(name="name")
     val name: String,
     @ColumnInfo(name="description")
-    val description: String?
+    val description: String?,
+    @ColumnInfo(name = "is_favorite")
+    var isFavorite: Int = 0,
+    @ColumnInfo(name = "text")
+    var text: String?
 
 )
