@@ -13,6 +13,9 @@ interface BookDao {
     @Query("SELECT * FROM themes WHERE id=:id")
     fun getTextByThemeId(id: Int) : ThemeModel
 
+    @Query("SELECT * FROM themes WHERE is_favorite=1")
+    fun getFavoriteThemes() : List<ThemeModel>
+
     @Update
     fun updateTheme(theme: ThemeModel)
 

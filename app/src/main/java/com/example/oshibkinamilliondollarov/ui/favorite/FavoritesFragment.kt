@@ -1,34 +1,34 @@
-package com.example.oshibkinamilliondollarov.ui.home
+package com.example.oshibkinamilliondollarov.ui.favorite
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.oshibkinamilliondollarov.R
 import com.example.oshibkinamilliondollarov.data.BookDatabase
 import com.example.oshibkinamilliondollarov.data.dao.BookDao
-import com.example.oshibkinamilliondollarov.ui.MainActivity
 import com.example.oshibkinamilliondollarov.ui.detail.DetailActivity
-import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.favorites_fragment.*
 
-class HomeFragment : Fragment(R.layout.fragment_home) {
-    private val myAdapter = HomeAdapter()
+class FavoritesFragment : Fragment(R.layout.favorites_fragment) {
+
+    private val myAdapter = FavoritesAdapter()
     private lateinit var dao: BookDao
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        rvThemes.adapter = myAdapter
+        rvFavorites.adapter = myAdapter
         dao = BookDatabase.getInstance(requireContext()).dao()
         myAdapter.onItemClicked = {
             val mIntent = Intent(requireActivity(), DetailActivity::class.java)
             mIntent.putExtra(DetailActivity.TEXTS_ID, it)
             startActivity(mIntent)
         }
-        setData()
     }
-
-    private fun setData() {
-        myAdapter.models = dao.getAllData()
+    override fun onStart() {
+        super.onStart()
+        setModel()
+    }
+    private fun setModel() {
+        myAdapter.models = dao.getFavoriteThemes()
     }
 }

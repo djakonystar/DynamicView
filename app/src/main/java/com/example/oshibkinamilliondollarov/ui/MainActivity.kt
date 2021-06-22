@@ -1,17 +1,24 @@
 package com.example.oshibkinamilliondollarov.ui
 
 import android.os.Bundle
-import android.view.Menu
 import androidx.appcompat.app.ActionBarDrawerToggle
 import com.google.android.material.navigation.NavigationView
-
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
 import com.example.oshibkinamilliondollarov.R
+import com.example.oshibkinamilliondollarov.ui.favorite.FavoritesFragment
 import com.example.oshibkinamilliondollarov.ui.home.HomeFragment
 
 class MainActivity : AppCompatActivity() {
+
+    companion object {
+        const val chapter_id = "chapter_id"
+        const val home = 1
+        const val isFavorite = 2
+        const val reviews = 3
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,12 +35,17 @@ class MainActivity : AppCompatActivity() {
         toogle.syncState()
 
         val fragment = HomeFragment()
-        
+        val bundle = Bundle()
+        bundle.putInt(chapter_id, 1)
         supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, fragment).commit()
         navView.setNavigationItemSelectedListener {
+            val mFragment = HomeFragment()
+            val mBundle = Bundle()
+            mFragment.arguments = mBundle
             when(it.itemId) {
                 R.id.nav_home -> {
-                    return@setNavigationItemSelectedListener true
+                    mBundle.putInt(chapter_id, 1)
+                    mFragment.arguments = mBundle
                 }
                 R.id.nav_reviews -> {
                     return@setNavigationItemSelectedListener true
@@ -42,6 +54,11 @@ class MainActivity : AppCompatActivity() {
                     return@setNavigationItemSelectedListener true
                 }
                 R.id.nav_favorites -> {
+                    mBundle.putInt(chapter_id, 2)
+                    val fragment = FavoritesFragment()
+                    fragment.arguments = mBundle
+                    supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, fragment).commit()
+                    drawerLayout.closeDrawer(GravityCompat.START)
                     return@setNavigationItemSelectedListener true
                 }
                 R.id.nav_share -> {
@@ -49,11 +66,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 else -> return@setNavigationItemSelectedListener false
             }
+            supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, mFragment).commit()
+            drawerLayout.closeDrawer(GravityCompat.START)
+            return@setNavigationItemSelectedListener true
         }
     }
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.main, menu)
-        return true
-    }
+
 }

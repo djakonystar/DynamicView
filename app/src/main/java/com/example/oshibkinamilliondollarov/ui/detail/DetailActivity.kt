@@ -14,7 +14,6 @@ class DetailActivity : AppCompatActivity() {
 
     companion object {
         const val TEXTS_ID = "textsId"
-
     }
     private var themeId: Int = 0
     private lateinit var dao: BookDao
@@ -24,7 +23,6 @@ class DetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
-
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -34,10 +32,7 @@ class DetailActivity : AppCompatActivity() {
         themeModel.text?.let {
             webView.loadData(it, "text/html", "UTF-8")
         }
-
-        themeModel = dao.getTextByThemeId(themeId)
         supportActionBar?.title = themeModel.name
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -69,5 +64,4 @@ class DetailActivity : AppCompatActivity() {
             menuItem?.setIcon(R.drawable.ic_baseline_bookmark_border_24)
         }
     }
-
 }
