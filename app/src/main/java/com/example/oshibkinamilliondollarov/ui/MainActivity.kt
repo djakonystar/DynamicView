@@ -10,6 +10,7 @@ import androidx.core.view.GravityCompat
 import com.example.oshibkinamilliondollarov.R
 import com.example.oshibkinamilliondollarov.ui.favorite.FavoritesFragment
 import com.example.oshibkinamilliondollarov.ui.home.HomeFragment
+import com.example.oshibkinamilliondollarov.ui.reviews.ReviewsFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -48,6 +49,11 @@ class MainActivity : AppCompatActivity() {
                     mFragment.arguments = mBundle
                 }
                 R.id.nav_reviews -> {
+                    mBundle.putInt(chapter_id, 3)
+                    val rfragment = ReviewsFragment()
+                    rfragment.arguments = mBundle
+                    supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, rfragment).commit()
+                    drawerLayout.closeDrawer(GravityCompat.START)
                     return@setNavigationItemSelectedListener true
                 }
                 R.id.nav_about_us -> {
