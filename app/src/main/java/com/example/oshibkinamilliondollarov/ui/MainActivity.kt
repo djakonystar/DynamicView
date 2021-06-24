@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         const val home = 1
         const val isFavorite = 2
         const val reviews = 3
+        const val aboutUs = 4
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,7 +39,8 @@ class MainActivity : AppCompatActivity() {
         val fragment = HomeFragment()
         val bundle = Bundle()
         bundle.putInt(chapter_id, 1)
-        supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, fragment).commit()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainer, fragment).commit()
         navView.setNavigationItemSelectedListener {
             val mFragment = HomeFragment()
             val mBundle = Bundle()
@@ -52,18 +54,26 @@ class MainActivity : AppCompatActivity() {
                     mBundle.putInt(chapter_id, 3)
                     val rfragment = ReviewsFragment()
                     rfragment.arguments = mBundle
-                    supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, rfragment).commit()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainer, rfragment).commit()
                     drawerLayout.closeDrawer(GravityCompat.START)
                     return@setNavigationItemSelectedListener true
                 }
                 R.id.nav_about_us -> {
+                    mBundle.putInt(chapter_id, 4)
+                    val afragment = AboutUsFragment()
+                    afragment.arguments = mBundle
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainer, afragment).commit()
+                    drawerLayout.closeDrawer(GravityCompat.START)
                     return@setNavigationItemSelectedListener true
                 }
                 R.id.nav_favorites -> {
                     mBundle.putInt(chapter_id, 2)
                     val fragment = FavoritesFragment()
                     fragment.arguments = mBundle
-                    supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, fragment).commit()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainer, fragment).commit()
                     drawerLayout.closeDrawer(GravityCompat.START)
                     return@setNavigationItemSelectedListener true
                 }
@@ -72,7 +82,8 @@ class MainActivity : AppCompatActivity() {
                 }
                 else -> return@setNavigationItemSelectedListener false
             }
-            supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, mFragment).commit()
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, mFragment).commit()
             drawerLayout.closeDrawer(GravityCompat.START)
             return@setNavigationItemSelectedListener true
         }
