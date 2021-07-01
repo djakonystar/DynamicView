@@ -19,13 +19,10 @@ class HomeAdapter: RecyclerView.Adapter<HomeAdapter.MyViewHolder>() {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_theme, parent, false)
         return MyViewHolder(itemView)
     }
-
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.populateModel(models[position])
     }
-
     var onItemClicked: (id: Int) -> Unit = {}
-
     override fun getItemCount(): Int = models.size
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

@@ -1,4 +1,4 @@
-package com.example.oshibkinamilliondollarov.ui.reviews
+package com.example.oshibkinamilliondollarov.ui
 
 import androidx.fragment.app.Fragment
 import com.example.oshibkinamilliondollarov.R

@@ -10,7 +10,8 @@ import androidx.core.view.GravityCompat
 import com.example.oshibkinamilliondollarov.R
 import com.example.oshibkinamilliondollarov.ui.favorite.FavoritesFragment
 import com.example.oshibkinamilliondollarov.ui.home.HomeFragment
-import com.example.oshibkinamilliondollarov.ui.reviews.ReviewsFragment
+import com.example.oshibkinamilliondollarov.ui.settings.SettingsFragment
+import kotlinx.android.synthetic.main.about_us_fragment.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         const val isFavorite = 2
         const val reviews = 3
         const val aboutUs = 4
+        const val settings = 5
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -77,6 +79,16 @@ class MainActivity : AppCompatActivity() {
                     drawerLayout.closeDrawer(GravityCompat.START)
                     return@setNavigationItemSelectedListener true
                 }
+                R.id.nav_settings -> {
+                    mBundle.putInt(chapter_id, 5)
+                    val sfragment = SettingsFragment()
+                    sfragment.arguments = mBundle
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainer, sfragment).commit()
+                    drawerLayout.closeDrawer(GravityCompat.START)
+                    return@setNavigationItemSelectedListener true
+                }
+
                 R.id.nav_share -> {
                     return@setNavigationItemSelectedListener true
                 }
@@ -88,5 +100,4 @@ class MainActivity : AppCompatActivity() {
             return@setNavigationItemSelectedListener true
         }
     }
-
 }
